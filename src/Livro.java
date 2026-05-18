@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 class Livro {
     private String titulo;
     private String isbn;
@@ -9,9 +11,14 @@ class Livro {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true; // [cite: 78]
-        if (!(obj instanceof Livro)) return false; // [cite: 79]
-        Livro outro = (Livro) obj; // [cite: 80]
-        return this.isbn.equals(outro.isbn); // [cite: 81]
+        if (this == obj) return true;
+        if (!(obj instanceof Livro)) return false;
+        Livro outro = (Livro) obj;
+        return this.isbn.equals(outro.isbn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(isbn);
     }
 }
